@@ -4,6 +4,7 @@ import cartReducer from './cartReducer'
 import {userOrdersReducer, pendingOrdersReducer} from './ordersReducer'
 import {productsReducer, createProductReducer, createProductErrorReducer, editProductReducer, editProductErrorReducer, createReviewErrorReducer} from './productsReducer'
 import {registerReducer, loginReducer, registerErrorReducer, loginErrorReducer} from './authReducer'
+import {employeesReducer, createEmployeeReducer, createEmployeeErrorReducer, editEmployeeReducer, editEmployeeErrorReducer,} from './employeesReducer'
 
 export default {
   register: registerReducer,
@@ -20,5 +21,10 @@ export default {
   createReviewError: createReviewErrorReducer,
   cart: cartReducer,
   userOrders: userOrdersReducer,
-  pendingOrders: pendingOrdersReducer
+  pendingOrders: pendingOrdersReducer,
+  createEmployee: createEmployeeReducer,
+  createEmployeeError: createEmployeeErrorReducer,
+  employees : employeesReducer,
+  editEmployee: editEmployeeReducer,
+  editEmployeeError: editEmployeeErrorReducer
 }

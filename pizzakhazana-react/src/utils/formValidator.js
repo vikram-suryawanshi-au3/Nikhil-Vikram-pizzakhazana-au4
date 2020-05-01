@@ -152,7 +152,7 @@ const createProductValidationFunc = (name, ingredients, description, image, weig
     validPrice
   }
 }
-const createEmployeeValidationFunc = (name, email, address, photo, adhar_card, mobile_no) => {
+const createEmployeeValidationFunc = (name, email, photo, mobile_no, adhar_card, address) => {
   let validName = (() => {
     if (
       name.length > 2 &&
@@ -187,7 +187,7 @@ const createEmployeeValidationFunc = (name, email, address, photo, adhar_card, m
 
   let validMobile = (() => {
     if (
-      mobile_no.length > 10 &&
+      mobile_no.length > 9 &&
       mobile_no !== ''
     ) {
       return true

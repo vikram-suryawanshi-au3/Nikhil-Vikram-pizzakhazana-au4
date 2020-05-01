@@ -5,11 +5,8 @@ import './Preloader.css'
 const Preloader = ({ loading }) => {
   if (!loading) return null
   return (
-    // <div className='preloader'>
-    //   {loading && <p>Loading &hellip;</p>}
-    // </div>
-    <div id="loading-wrapper">
-    <div id="loading-text">{ loading && <div>LOADING...</div>}</div>
+  <div id="loading-wrapper">
+    <div id="loading-text">{ loading && <div>LOADING</div>}</div>
     <div id="loading-content"></div>
   </div>
   )

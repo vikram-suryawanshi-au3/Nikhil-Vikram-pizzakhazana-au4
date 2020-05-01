@@ -1,6 +1,7 @@
 const express = require('express')
 const Pizza = require('../models/Pizza')
 const User = require('../models/User')
+const Employee = require('../models/User')
 
 const router = new express.Router()
 
@@ -11,9 +12,14 @@ router.get('/', (req, res) => {
       Pizza
         .count({})
         .then(products => {
-          res.status(200).json({
-            products,
-            users
+          Employee
+          .count({})
+          .then(employees => {
+            res.status(200).json({
+              products,
+              users,
+              employees
+            })
           })
         })
     })

@@ -16,7 +16,7 @@ module.exports = (settings) => {
     console.log('MongoDB ready!')
 
     User.seedAdminUser()
-    // Pizza.seedPizzas()
+    Pizza.seedPizzas()
   })
 
   db.on('error', err => console.log(`Database error: ${err}`))

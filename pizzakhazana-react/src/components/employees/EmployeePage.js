@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import Input from '../common/Input'
-// import toastr from 'toastr'
+import toastr from 'toastr'
 import {createEmployeeValidationFunc} from '../../utils/formValidator'
 // import {createProductAction} from '../../actions/productsActions'
 // import {redirectAction} from '../../actions/authActions'
+import { createEmployeesAction } from "../../actions/employeeActions";
+import { redirectAction } from "../../actions/authActions";
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import employeeValidator from '../../utils/employeeValidator'
@@ -23,6 +25,16 @@ class EmployeePage extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.createEmployeeError.hasError) {
+      toastr.error(nextProps.createEmployeeError.message);
+    } else if (nextProps.createEmployeeSuccess) {
+      this.props.redirect();
+      toastr.success("employee created successfully");
+      this.props.history.push("/menu");
+    }
   }
 
   onChange (e) {
@@ -132,13 +144,26 @@ class EmployeePage extends Component {
 
 function mapStateToProps (state) {
   return {
-    
+    createEmployeeSuccess: state.createEmployee.success,
+    createEmployeeError: state.createEmployeeError,
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    
+    createEmployee: (name, email, photo, mobile_no, adhar_card, address) => {
+      dispatch(
+        createEmployeesAction({
+          name,
+          email,
+          photo,
+          mobile_no,
+          adhar_card,
+          address,
+        })
+      );
+    },
+    redirect: () => dispatch(redirectAction()),
   }
 }
 

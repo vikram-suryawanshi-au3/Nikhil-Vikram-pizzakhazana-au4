@@ -41,7 +41,7 @@ async function fetchProducts () {
   const res = await window.fetch(host + 'pizza/all')
   return res.json()
 }
-
+  
 async function createProduct (data) {
   const res = await window.fetch(host + 'pizza/create', {
     method: 'POST',
@@ -156,6 +156,73 @@ async function approveOrder (id) {
   return res.json()
 }
 
+
+async function fetchEmployees() {
+  const res = await window.fetch(host + "employee/all");
+  return res.json();
+}
+
+async function createEmployee(data) {
+  const res = await window.fetch(host + "employee/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "bearer " + Auth.getToken(),
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.json();
+}
+
+async function editEmployee(id, data) {
+  const res = await window.fetch(host + `employee/edit/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "bearer " + Auth.getToken(),
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.json();
+}
+
+async function deleteEmployee(id) {
+  const res = await window.fetch(host + `employee/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "bearer " + Auth.getToken(),
+    },
+  });
+
+  return res.json();
+}
+
+async function sendEmail (email,message) {
+  await window.fetch(host + `contactus?from=${email}&message=${message}`,{
+    headers : { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+     }
+  })
+  .catch((error) => {
+    console.error(error)
+})
+}
+
+async function approveEmail (to,id,price) {
+  await window.fetch(host + `admin/orders/pending?to=${to}&id=${id}&price=${price}`,{
+    headers : { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+     }
+  })
+  .catch((error) => {
+    console.error(error)
+})
+}
+
 export {
   register,
   login,
@@ -170,5 +237,11 @@ export {
   submitOrder,
   fetchUserOrders,
   fetchPendingOrders,
-  approveOrder
+  approveOrder,
+  fetchEmployees,
+  createEmployee,
+  editEmployee,
+  deleteEmployee,
+  sendEmail,
+  approveEmail
 }

@@ -13,6 +13,7 @@ function createProductValidator (name, ingredients, description, image, weight, 
     toastr.error('Description must be between 10 and 200 characters long')
     return false
   }
+  
   if (image.length < 14 || !(image.startsWith('https://') || image.startsWith('http://'))) {
     toastr.error('Image URL must be at least 14 characters long and must be valid URL')
     return false

@@ -28,6 +28,7 @@ class CartRow extends Component {
   render () {
     const {image, name, ingredients, price} = this.props.product
     const subtotal = this.props.product.quantity * price
+
     return (
       <tr>
         <td data-th='Product'>
@@ -39,7 +40,9 @@ class CartRow extends Component {
             </div>
           </div>
         </td>
+
         <td data-th='Price'>{price.toFixed(2)} ₹</td>
+
         <td data-th='Quantity'>
           <input
             type='number'
@@ -50,15 +53,15 @@ class CartRow extends Component {
             min="1" />
         </td>
         <td data-th='Subtotal' className='text-center'>{subtotal.toFixed(2)} ₹</td>
+
         <td className='actions' data-th=''>
-          {/* <button className='btn btn-info btn-sm' onClick={this.onRefreshButtonClick}><i className='fa fa-refresh' /></button> */}
           <IconButton aria-label="delete" onClick={this.onRefreshButtonClick} >
-          <AutorenewIcon />
+            <AutorenewIcon />
           </IconButton>
+
           <IconButton aria-label="delete" onClick={this.onDeleteButtonClick} >
-          <DeleteIcon />
+            <DeleteIcon />
           </IconButton>
-          {/* <button className='btn btn-danger btn-sm' onClick={this.onDeleteButtonClick}><i className='fa fa-trash-o' /></button> */}
         </td>
       </tr>
     )

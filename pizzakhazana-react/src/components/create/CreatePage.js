@@ -58,11 +58,14 @@ class CreatePage extends Component {
       this.state.price
     )
 
+    const { productsCount } = this.props.stats
+
     return (
 
-      <div className="row">
-        <div className="container mt-5 col-6">
-          <div className="card near-moon-gradient form-white">
+      // <div className="row">
+      <div className="container mt-5 col-6">
+        <h1 className="text-center">Total pizzas created till now : {productsCount}</h1>
+          <div className="card near-moon-gradient form-white mt-5">
             <div className="card-body">
               <form onSubmit={this.onSubmit}>
                 <h1 className="text-center indigo-text font-bold">Create New Pizza</h1>
@@ -104,7 +107,9 @@ class CreatePage extends Component {
                   placeholder='Enter pizza image URL'
                   value={this.state.image}
                   onChange={this.onChange}
-                  valid={validObj.validImage} />
+                  valid={validObj.validImage} 
+                  />
+                  {/* <input type="file" name="image"></input> */}
                 </div>
                 <div className="md-form">
                   <Input
@@ -133,7 +138,7 @@ class CreatePage extends Component {
             </div>
           </div>
         </div>
-      </div>
+     
     )
   }
 }
@@ -141,7 +146,8 @@ class CreatePage extends Component {
 function mapStateToProps (state) {
   return {
     createProductSuccess: state.createProduct.success,
-    createProductError: state.createProductError
+    createProductError: state.createProductError,
+    stats: state.stats
   }
 }
 

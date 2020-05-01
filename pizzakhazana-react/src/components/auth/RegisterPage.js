@@ -65,105 +65,61 @@ class RegisterPage extends React.Component {
         <div className="container mt-5 col-6">
           <div className="card near-moon-gradient form-white">
             <div className="card-body">
+
               <form onSubmit={this.onSubmit}>
+                
                 <h1 className="text-center indigo-text font-bold">Register</h1>
+
                 <div className="md-form">
                   <Input
                   type='text'
                   name='email'
-                  // label='E-mail'
                   placeholder='Enter e-mail'
                   value={this.state.email}
                   onChange={this.onChange}
                   valid={validObj.validEmail} />
                 </div>
+
                 <div className="md-form">
                   <Input
                   type='text'
                   name='username'
-                  // label='Username'
                   placeholder='Enter username'
                   value={this.state.username}
                   onChange={this.onChange}
                   valid={validObj.validUsername} />
                 </div>
+
                 <div className="md-form">
                   <Input
                   type='password'
                   name='password'
-                  // label='Password'
                   placeholder='Enter password'
                   value={this.state.password}
                   onChange={this.onChange}
                   valid={validObj.validPassword} />
                 </div>
+
                 <div className="md-form">
                   <Input
                   type='password'
                   name='confirmPassword'
-                  // label='Confirm Password'
                   placeholder='Enter your password again'
                   value={this.state.confirmPassword}
                   onChange={this.onChange}
                   valid={validObj.validConfirmPassword} />
                 </div>
+
                 <div className="md-form text-center">
                   <input type='submit' className='btn btn-primary' value='Register' />
                 </div>
+
               </form>
             </div>
           </div>
         </div>
       </div>
       </div>
-
-
-      // <div className='container'>
-      //   <div className='row space-top'>
-      //     <div className='col-md-12'>
-      //       <h1>Register</h1>
-      //     </div>
-      //   </div>
-      //   <form onSubmit={this.onSubmit}>
-      //     <div className='row space-top'>
-      //       <div className='col-md-4'>
-      //         <Input
-      //           type='text'
-      //           name='email'
-      //           label='E-mail'
-      //           placeholder='Enter e-mail'
-      //           value={this.state.email}
-      //           onChange={this.onChange}
-      //           valid={validObj.validEmail} />
-      //         <Input
-      //           type='text'
-      //           name='username'
-      //           label='Username'
-      //           placeholder='Enter username'
-      //           value={this.state.username}
-      //           onChange={this.onChange}
-      //           valid={validObj.validUsername} />
-      //         <Input
-      //           type='password'
-      //           name='password'
-      //           label='Password'
-      //           placeholder='Enter password'
-      //           value={this.state.password}
-      //           onChange={this.onChange}
-      //           valid={validObj.validPassword} />
-      //         <Input
-      //           type='password'
-      //           name='confirmPassword'
-      //           label='Confirm Password'
-      //           placeholder='Enter your password again'
-      //           value={this.state.confirmPassword}
-      //           onChange={this.onChange}
-      //           valid={validObj.validConfirmPassword} />
-      //         <input type='submit' className='btn btn-primary' value='Register' />
-      //       </div>
-      //     </div>
-      //   </form>
-      // </div>
     )
   }
 }

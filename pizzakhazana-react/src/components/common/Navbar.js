@@ -9,85 +9,87 @@ import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { blue } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom'
 import PeopleIcon from '@material-ui/icons/People';
-// import Badge from '@material-ui/core/Badge';
-
-
-const useStyles = makeStyles((theme) => ({
-    margin: {
-      margin: theme.spacing(0),
-    },
-    extendedIcon: {
-      marginTop: theme.spacing(5),
-    },
-  }));
+import Badge from '@material-ui/core/Badge';
 
 const Navbar = (props) => {
-  const {loggedIn, isAdmin, logout, users, products} = props
-  const classes = useStyles();
+  const {loggedIn, isAdmin, logout,pending, cart} = props
+
 
   return (
     <div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <img src={require("../../full logo.png")} alt="logo" href="#" width="120" height="60"></img>            
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" style={{display: 'flex', alignItems: 'center',color:"white"}}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <img src={require("../../full logo.png")} alt="logo" to="#" width="120" height="60"></img>            
+            <div className="collapse navbar-collapse" id="navbarText">
+                
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item" style={{display: 'flex', alignItems: 'center',color:"white"}}>
                         
-                            <a class="nav-link" href="/" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <HomeIcon style={{ color: blue[100], verticalAlign:"middle"}}/>Home</a>
+                            <Link className="nav-link" to="/" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <HomeIcon style={{ color: blue[100], verticalAlign:"middle"}}/>Home</Link>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="/menu" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <MenuBookIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Menu</a>
+                    <li className="nav-item">
+                            <Link className="nav-link" to="/menu" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <MenuBookIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Menu</Link>
                         </li>
 
 
-                    {loggedIn && !isAdmin &&  <li class="nav-item" >
-                            <a class="nav-link" href="/orders" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <LocalShippingIcon style={{ color: blue[100], verticalAlign:"middle" }}/>My Orders</a>
+                    {loggedIn && !isAdmin &&  <li className="nav-item" >
+                            <Link className="nav-link" to="/orders" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <LocalShippingIcon style={{ color: blue[100], verticalAlign:"middle" }}/>My Orders</Link>
                         </li>}
 
 
-                    {isAdmin &&  <li class="nav-item">
-                            <a class="nav-link" href="/admin/create" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <AddCircleIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Create New Pizza</a>
+                    {isAdmin &&  <li className="nav-item">
+                            <Link className="nav-link" to="/admin/create" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <AddCircleIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Create New Pizza</Link>
                         </li>}
 
 
-                    {isAdmin &&  <li class="nav-item">
-                            <a class="nav-link" href="/admin/orders/pending" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <HourglassEmptySharpIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Pending Orders</a>
+                    {isAdmin &&  <li className="nav-item">
+                            <Link className="nav-link" to="/admin/orders/pending" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <Badge badgeContent={pending} 
+                                    color="secondary" 
+                                    anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                    }}>
+                                <HourglassEmptySharpIcon style={{ color: blue[100], verticalAlign:"middle" }}/>
+                            </Badge>Pending Orders</Link>
                         </li>}
 
-                    {isAdmin &&  <li class="nav-item">
-                            <a class="nav-link" href="/admin/employee" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <PeopleIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Employees</a>
+                    {isAdmin &&  <li className="nav-item">
+                            <Link className="nav-link" to="/admin/employee" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <PeopleIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Employees</Link>
                         </li>}
 
 
-                    {loggedIn && !isAdmin && <li class="nav-item">
-                            <a class="nav-link" href="/cart" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <ShoppingCartSharpIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Cart</a>
+                    {loggedIn && !isAdmin && <li className="nav-item">
+                            <Link className="nav-link" to="/cart" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <Badge badgeContent={cart} 
+                                    color="secondary" 
+                                    anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                    }}>
+                            <ShoppingCartSharpIcon style={{ color: blue[100], verticalAlign:"middle" }}/>
+                            </Badge>Cart</Link>
                         </li>}
-
-
-                    
                 </ul>
-                <ul class="navbar-nav ml-auto">
-                        {!loggedIn && <li class="nav-item">
-                            <a class="nav-link" href="/login" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <LockOpenRoundedIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Login</a>
+
+                <ul className="navbar-nav ml-auto">
+                        {!loggedIn && <li className="nav-item">
+                            <Link className="nav-link" to="/login" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <LockOpenRoundedIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Login</Link>
                         </li>}
 
-                        {!loggedIn && <li class="nav-item">
-                            <a class="nav-link" href="/register" style={{fontSize : "20px", marginLeft:"10px"}}>
-                            <PersonAddOutlinedIcon  style={{ color: blue[100], verticalAlign:"middle" }}/>Register</a>
+                        {!loggedIn && <li className="nav-item">
+                            <Link className="nav-link" to="/register" style={{fontSize : "20px", marginLeft:"10px"}}>
+                            <PersonAddOutlinedIcon  style={{ color: blue[100], verticalAlign:"middle" }}/>Register</Link>
                         </li>}
-                        {loggedIn && <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)" style={{fontSize : "20px", marginLeft:"10px"}} onClick={logout}>
+                        {loggedIn && <li className="nav-item">
+                            <a className="nav-link" style={{fontSize : "20px", marginLeft:"10px"}} onClick={logout}>
                             <ExitToAppSharpIcon style={{ color: blue[100], verticalAlign:"middle" }}/>Logout</a>
                         </li>}
                 </ul>
@@ -97,5 +99,7 @@ const Navbar = (props) => {
         </div>
   )
 }
+
+
 
 export default Navbar

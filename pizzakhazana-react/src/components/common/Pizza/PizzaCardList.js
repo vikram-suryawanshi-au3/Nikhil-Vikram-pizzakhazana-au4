@@ -13,7 +13,8 @@ const PizzaCardList = (props) => {
           name={p.name}
           image={p.image}
           description={p.description}
-          weight={p.weight} />))
+          weight={p.weight}
+          price = {p.price} />))
 
     let cardDeck = <div key={i} className='card-deck space-top'>{pizzaCards}</div>
     pizzaCardList.push(cardDeck)

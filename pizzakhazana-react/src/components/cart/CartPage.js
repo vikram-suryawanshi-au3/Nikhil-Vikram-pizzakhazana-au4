@@ -5,8 +5,14 @@ import {Link, withRouter} from 'react-router-dom'
 import {syncCartAction, removeFromCartAction} from '../../actions/cartActions'
 import {submitOrderAction} from '../../actions/ordersActions'
 import {connect} from 'react-redux'
+import Input from '../common/Input'
 
 class CartPage extends Component {
+  state = {
+    address : '',
+    pincode: '',
+    landmark:''
+  }
   onCheckoutButtonClick () {
     let products = []
     for (let element of this.props.cart) {
@@ -15,11 +21,21 @@ class CartPage extends Component {
         id: element.id,
         name: product.name,
         quantity: element.quantity,
-        price: product.price
+        price: product.price,
+        address : this.state.address,
+        landmark : this.state.landmark,
+        pincode : this.state.pincode,
+       
       })
     }
     this.props.submitOrder(products)
     this.props.history.push('/orders')
+  }
+
+  address = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
   }
 
   render () {
@@ -46,21 +62,48 @@ class CartPage extends Component {
             <tr>
               <th style={{ 'width': 50 }}>Product</th>
               <th style={{ 'width': 10 }}>Price</th>
-              <th style={{ 'width': 8 }}>Quantity</th>
+              <th style={{ 'width': 18 }}>Quantity</th>
               <th style={{ 'width': 22 }} className='text-center'>Subtotal</th>
-              <th style={{ 'width': 10 }} />
+              <th style={{ 'width': 5 }} />
             </tr>
           </thead>
+
           <tbody>
             {cartRows}
           </tbody>
+
           <tfoot>
+            {productsInCart.length > 0 && 
+            <tr>
+              <td>
+                <div>
+                  <h3 className="text-center font-bold" >Address</h3>
+                </div>
+              </td>
+
+              <td>
+                <Input type="number" name='pincode' value={this.state.pincode} placeholder="pin code" onChange={(e) => this.address(e)}></Input>
+              </td>
+
+              <td >
+                <Input type="text" name="address" value={this.state.address} placeholder="enter ur address" onChange={(e) => this.address(e)}></Input>
+              </td>
+
+              <td>
+                <Input type="text" name='landmark' value={this.state.landmark} placeholder="land mark" onChange={(e) => this.address(e)}></Input>
+              </td>
+
+              <td></td>
+            </tr>
+            }
+
             <tr>
               <td><Link to='/menu' className='btn btn-warning'><i className='fa fa-angle-left' /> Continue Shopping</Link></td>
               <td colSpan='2' className='hidden-xs' />
               <td className='hidden-xs text-center'><strong>Total {total.toFixed(2)} ₹</strong></td>
               {productsInCart.length > 0 && <td><button onClick={this.onCheckoutButtonClick.bind(this)} className='btn btn-success btn-block'>Checkout <i className='fa fa-angle-right' /></button></td>}
             </tr>
+
           </tfoot>
         </table>
       </div>

@@ -3,6 +3,9 @@ import OrdersRow from './OrdersRow'
 import Auth from '../../utils/auth'
 import {fetchUserOrdersAction, fetchPendingOrdersAction, approveOrderAction} from '../../actions/ordersActions'
 import {connect} from 'react-redux'
+// import {approved} from '../../mailer/mailer'
+import {approveEmail} from '../../api/remote'
+
 
 class OrdersPage extends Component {
   constructor (props) {
@@ -14,12 +17,34 @@ class OrdersPage extends Component {
   componentWillMount () {
     if (Auth.isUserAdmin()) {
       this.props.fetchPendingOrders()
+    //   let obj = this.props.pendingOrders.find(o => o._id === id)
+    // alert(id)
+    // alert(obj.email)
+    // alert(obj.products[0].price)
+    // this.props.approveOrder(id)
     } else {
       this.props.fetchUserOrders()
     }
   }
 
   onApproveButtonClick (id) {
+    // alert(id)
+    let obj = this.props.pendingOrders.find(o => o._id === id)
+    let to = obj.email.trim()
+    let data = {
+      id : id,
+      price : 0
+    }
+
+    obj.products.forEach((item) => {
+      return data.price += item.price * item.quantity
+    })
+      
+      // alert(data.id)
+      // alert(to)
+      // alert(data.price)
+      // approved(to, data)
+      approveEmail(to, data.id, data.price)
     this.props.approveOrder(id)
   }
 

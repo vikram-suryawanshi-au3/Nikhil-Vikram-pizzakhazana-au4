@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import OrderDetailsRow from './OrderDetailsRow'
+// import OrderAddress from './OrderAdress'
 import Auth from '../../utils/auth'
 import NotFoundPage from '../common/NotFound/NotFoundPage'
 import {fetchUserOrdersAction, fetchPendingOrdersAction} from '../../actions/ordersActions'
@@ -42,8 +43,12 @@ class OrderDetailsPage extends Component {
     }
 
     let products = order.products.map((p, i) => (<OrderDetailsRow key={i} product={p} index={i} />))
+    // let address = order.products.map((p, i) => (<OrderAddress key={i} product={p} />))
 
     return (
+      
+
+      
       <div className='container mt-4'>
         <h1 className='text-center indigo-text font-weight-bold'>Order #{order._id}</h1>
         <div className='row space-top'>
@@ -65,6 +70,7 @@ class OrderDetailsPage extends Component {
                       <th>Price</th>
                       <th>Quantity</th>
                       <th>Subtotal</th>
+                      <th>Address</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -75,7 +81,8 @@ class OrderDetailsPage extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>         
+     
     )
   }
 }

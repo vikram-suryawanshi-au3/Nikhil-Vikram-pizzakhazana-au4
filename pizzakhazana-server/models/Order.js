@@ -14,7 +14,8 @@ let orderSchema = mongoose.Schema({
     },
     default: 'Pending',
     required: REQUIRED_VALIDATION_MESSAGE
-  }
+  },
+  email: {type: mongoose.Schema.Types.String, required: REQUIRED_VALIDATION_MESSAGE}
 })
 
 let Order = mongoose.model('Order', orderSchema)

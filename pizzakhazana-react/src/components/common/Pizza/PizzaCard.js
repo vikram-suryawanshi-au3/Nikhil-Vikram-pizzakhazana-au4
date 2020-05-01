@@ -33,14 +33,14 @@ class PizzaCard extends Component {
   }
 
   render () {
-    const { id, name, image, description, weight } = this.props
+    const { id, name, image, description, weight, price } = this.props
     let footer
     if (Auth.isUserAdmin()) {
       footer = (
         <div className='buttons'>
           <small className='text-muted'>{weight} gr</small>
-          <Link to={`/admin/edit/${id}`} className='btn '><EditIcon color="primary"/></Link>
-          <button onClick={this.onDeleteButtonClick} className='btn '><DeleteIcon color="secondary"/></button>
+          <Link to={`/admin/edit/${id}`} className='btn' style={{background: "#d3d3d3", padding:"20px", borderRadius: "50%"}}><EditIcon color="primary"/></Link>
+          <button onClick={this.onDeleteButtonClick} className='btn' style={{background: "#d3d3d3", padding:"20px", borderRadius: "50%"}}><DeleteIcon color="secondary"/></button>
         </div>
       )
     } else {
@@ -54,13 +54,16 @@ class PizzaCard extends Component {
     }
 
     return (
-      <div class="card mt-3 shadow p-3 mb-5 bg-white rounded"  style={{width: "22rem", height: "30rem"}} data-aos="zoom-in" data-aos-duration="1200">
-        <img class="card-img-top" src={image} alt={name}/>
-        <div class="card-body">
+      <div className="card mt-3 shadow p-3 mb-5 bg-white rounded"  style={{width: "22rem", height: "30rem"}} data-aos="zoom-in" data-aos-duration="1200">
+        <img className="card-img-top" src={image} alt={name}/>
+        <div className="card-body">
           <h5 className='card-title'>{name}</h5>
+          <div style={{textAlignLast:"right"}}>
+          <small className='text-muted red-text'>₹ {price}</small>
+          </div>
           <p className='card-text'>{description}</p>
         </div>
-        <br></br>
+        {/* <br></br> */}
         {footer}
       </div>
 
