@@ -1,0 +1,19 @@
+{
+  "name": "pizzakhazana",
+  "version": "1.0.0",
+  "description": "capston project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikram-suryawanshi-au3/Nikhil-Vikram-pizzakhazana-au4.git"
+  },
+  "author": "vikram,nikhil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikram-suryawanshi-au3/Nikhil-Vikram-pizzakhazana-au4/issues"
+  },
+  "homepage": "https://github.com/vikram-suryawanshi-au3/Nikhil-Vikram-pizzakhazana-au4#readme"
+}

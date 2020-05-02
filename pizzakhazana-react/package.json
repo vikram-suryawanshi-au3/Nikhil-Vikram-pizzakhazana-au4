@@ -1,0 +1,35 @@
+{
+  "name": "pizzakhazana",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@sendgrid/mail": "^6.4.0",
+    "aos": "^2.3.4",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "mdbreact": "4.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "4.0.0",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.3.0",
+    "standard": "11.0.1",
+    "toastr": "2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev" : "env-cmd .env react-scripts start"
+  },
+  "proxy": "https://sendgrid.api-docs.io",
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}
